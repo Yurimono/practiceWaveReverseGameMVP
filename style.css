@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+body, html {
+    margin: 0; padding: 0; width: 100vw; height: 100vh;
+    overflow: hidden; background-color: #050506;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+
+.screen {
+    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+    opacity: 1; visibility: visible; transform: scale(1);
+    display: flex; justify-content: center; align-items: center;
+}
+.screen.hidden {
+    opacity: 0; visibility: hidden; transform: scale(0.97);
+    pointer-events: none; z-index: -1;
+}
+
+
+.canvas-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; }
+#math-canvas-grid { z-index: 1; background: #0a0a0b; mask-image: radial-gradient(circle at center, black 60%, transparent 100%); -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%); }
+#math-canvas-graph { z-index: 2; }
+
+
+.hub-container {
+    background: rgba(20, 20, 22, 0.7); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px;
+    padding: 60px 80px; text-align: center; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.game-title { font-size: 64px; color: white; margin: 0 0 10px 0; letter-spacing: 4px; }
+.text-accent { color: #00ffcc; text-shadow: 0 0 20px rgba(0, 255, 204, 0.5); }
+.game-subtitle { color: rgba(255, 255, 255, 0.5); font-size: 18px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+.hub-buttons { display: flex; gap: 20px; justify-content: center; }
+
+
+#global-coords {
+    position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+    font-size: 14px; color: rgba(255, 255, 255, 0.6);
+    background: rgba(10, 10, 11, 0.8); padding: 8px 24px;
+    border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);
+    z-index: 10; backdrop-filter: blur(8px);
+}
+.math-ui-container {
+    position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: row; align-items: stretch; gap: 15px;
+    z-index: 10; width: 100%; max-width: 800px;
+}
+.math-input-wrapper {
+    flex-grow: 1; background: rgba(20, 20, 22, 0.85); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px;
+    padding: 0 20px; display: flex; align-items: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); transition: border-color 0.3s ease;
+}
+.math-input-wrapper:focus-within { border-color: rgba(0, 255, 204, 0.5); }
+#math-input { width: 100%; background: transparent; border: none; color: white; font-size: 24px; font-family: inherit; outline: none; text-align: center; }
+
+
+button { font-family: inherit; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-sizing: border-box; display: flex; justify-content: center; align-items: center;}
+.btn-primary, .btn-secondary { min-width: 140px; padding: 15px 30px; font-size: 16px; border-radius: 12px; }
+.btn-large { min-width: 200px; padding: 20px 40px; font-size: 18px; }
+
+.btn-primary { background: #00ffcc; color: #0a0a0b; border: none; box-shadow: 0 0 15px rgba(0, 255, 204, 0.2); }
+.btn-primary:hover { background: #33ffd6; box-shadow: 0 0 25px rgba(0, 255, 204, 0.4); transform: translateY(-2px); }
+.btn-primary:active { transform: translateY(1px); box-shadow: 0 0 10px rgba(0, 255, 204, 0.2); }
+
+.btn-secondary { background: rgba(0,0,0,0.3); color: rgba(255, 255, 255, 0.8); border: 1px solid rgba(255, 255, 255, 0.2); }
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.5); transform: translateY(-2px); }
+.btn-secondary:active { transform: translateY(1px); }
+
+
+#screen-score { flex-direction: column; }
+.score-title { color: white; font-size: 48px; margin-bottom: 10px; letter-spacing: 2px; }
+#score-display { color: #00ffcc; font-size: 140px; font-weight: bold; text-shadow: 0 0 40px rgba(0, 255, 204, 0.3); margin-bottom: 40px; }
+
+.mode-card { display: flex; flex-direction: column; gap: 10px; }
+.difficulty-select {
+    background: rgba(10, 10, 11, 0.8); color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px;
+    padding: 8px 12px; font-family: inherit; font-size: 14px;
+    outline: none; cursor: pointer; text-align: center;
+}
+.difficulty-select:focus { border-color: #00ffcc; }
+.score-buttons { display: flex; gap: 20px; margin-top: 40px; }

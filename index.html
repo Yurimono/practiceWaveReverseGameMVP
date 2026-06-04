@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveReverse</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+</head>
+<body>
+    <div id=\"app-root\">
+        <div id="screen-hub" class="screen">
+            <div class="hub-container">
+                <h1 class="game-title">WAVE<span class="text-accent">REVERSE</span></h1>
+                <p class="game-subtitle">Signal Reconstruction Game</p>
+                <div class="hub-buttons">
+                    <div class="mode-card">
+                        <button id="btn-math-mode" class="btn-primary btn-large">Math Mode</button>
+                        <select id="math-difficulty" class="difficulty-select">
+                            <option value="easy">Easy (Basics)</option>
+                            <option value="medium" selected>Medium (Trigonometry)</option>
+                            <option value="hard">Hard (Advanced Curves)</option>
+                        </select>
+                    </div>
+                    <div class="mode-card">
+                        <button id="btn-audio-mode" class="btn-secondary btn-large">Audio Mode</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="screen-game-math" class="screen hidden">
+            <div id="global-coords" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.4); font-family: monospace; z-index: 10;">X: 0.00 | Y: 0.00</div>
+            <canvas id="math-canvas-grid" class="canvas-layer"></canvas>
+            <canvas id="math-canvas-graph" class="canvas-layer"></canvas>
+            
+            <div class="math-ui-container">
+                <button id="btn-back-math" class="btn-secondary">Back</button>
+                <div class="math-input-wrapper">
+                    <input type="text" id="math-input" placeholder="y =" autocomplete="off" autofocus>
+                </div>
+                <button id="btn-submit-math" class="btn-primary">Submit</button>
+            </div>
+            
+            <button id="btn-center-camera" class="thq-button-outline startup-modal-btn" style="position: absolute; top: 20px; right: 20px; z-index: 10; padding: 10px 20px;">Center</button>
+        </div>
+
+        <div id="screen-score" class="screen hidden">
+            <h1 class="score-title">MATCH SCORE</h1>
+            <div id="score-display">0.00</div>
+            <div class="score-buttons">
+                <button id="btn-score-menu" class="btn-secondary">Main Menu</button>
+                <button id="btn-score-retry" class="btn-primary">Next Round</button>
+            </div>
+        </div>
+        
+        <div id="screen-game-audio" class="screen hidden">
+            <button id="btn-back-audio" class="btn-secondary" style="position: absolute; top: 40px; left: 40px; z-index: 10;">Back</button>
+            <div class="audio-game-container">
+                <canvas id="audio-canvas" width="800" height="300"></canvas>
+                <div id="audio-controls" class="audio-controls-panel"></div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
